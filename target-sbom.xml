@@ -1,0 +1,78 @@
+<bom serialNumber="urn:uuid:4740d075-0f2f-4997-8696-ca90036c5ee1" version="1" xmlns="http://cyclonedx.org/schema/bom/1.4">
+  <metadata>
+    <timestamp>2023-06-19T09:10:59Z</timestamp>
+    <tools>
+      <tool>
+        <vendor>Sonatype Inc.</vendor>
+        <name>Nexus IQ Server</name>
+        <version>1.163.0-01</version>
+      </tool>
+    </tools>
+    <component type="application" bom-ref="b984b505-9df9-41e9-8ba1-c01feae0da08">
+      <group>com.sonatype.insight.brain</group>
+      <name>insight-brain-cli-common</name>
+      <version>1.164.0-SNAPSHOT</version>
+      <purl>pkg:maven/com.sonatype.insight.brain/insight-brain-cli-common@1.164.0-SNAPSHOT?type=jar</purl>
+    </component>
+    <properties>
+      <property name="Scan ID">4740d0750f2f49978696ca90036c5ee1</property>
+    </properties>
+  </metadata>
+  <components>
+    <component type="library" bom-ref="892f5b40-5371-46d4-a972-e30564414798">
+      <group>com.fasterxml.jackson.core</group>
+      <name>jackson-databind</name>
+      <version>2.15.1</version>
+      <licenses>
+        <license>
+          <id>Apache-2.0</id>
+        </license>
+      </licenses>
+      <purl>pkg:maven/com.fasterxml.jackson.core/jackson-databind@2.15.1?type=jar</purl>
+      <modified>false</modified>
+      <properties>
+        <property name="Sonatype truncated SHA1">ac9ba74d208faf356e47</property>
+        <property name="Match State">exact</property>
+        <property name="Identification Source">Sonatype</property>
+      </properties>
+    </component>
+  </components>
+  <vulnerabilities>
+    <vulnerability>
+      <id>CVE-2023-35116</id>
+      <source>
+        <name>NVD</name>
+        <url>http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-35116</url>
+      </source>
+      <ratings>
+        <rating>
+          <source>
+            <name>NVD</name>
+          </source>
+          <score>7.5</score>
+          <severity>critical</severity>
+          <method>other</method>
+          <vector>CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H</vector>
+        </rating>
+      </ratings>
+      <analysis>
+        <state>not_affected</state>
+        <justification>code_not_reachable</justification>
+        <responses>
+          <response>will_not_fix</response>
+          <response>update</response>
+        </responses>
+        <detail>An optional explanation of why the application is not affected by the vulnerable component.</detail>
+      </analysis>
+      <cwes>
+      <cwes>
+        <cwe>121</cwe>
+      </cwes>
+      <affects>
+        <target>
+          <ref>892f5b40-5371-46d4-a972-e30564414798</ref>
+        </target>
+      </affects>
+    </vulnerability>
+  </vulnerabilities>
+</bom>
