@@ -1,77 +1,86 @@
-<bom serialNumber="urn:uuid:4740d075-0f2f-4997-8696-ca90036c5ee1" version="1" xmlns="http://cyclonedx.org/schema/bom/1.4">
-  <metadata>
-    <timestamp>2023-06-19T09:10:59Z</timestamp>
-    <tools>
-      <tool>
-        <vendor>Sonatype Inc.</vendor>
-        <name>Nexus IQ Server</name>
-        <version>1.163.0-01</version>
-      </tool>
-    </tools>
-    <component type="application" bom-ref="b984b505-9df9-41e9-8ba1-c01feae0da08">
-      <group>com.sonatype.insight.brain</group>
-      <name>insight-brain-cli-common</name>
-      <version>1.164.0-SNAPSHOT</version>
-      <purl>pkg:maven/com.sonatype.insight.brain/insight-brain-cli-common@1.164.0-SNAPSHOT?type=jar</purl>
-    </component>
-    <properties>
-      <property name="Scan ID">4740d0750f2f49978696ca90036c5ee1</property>
-    </properties>
-  </metadata>
-  <components>
-    <component type="library" bom-ref="892f5b40-5371-46d4-a972-e30564414798">
-      <group>com.fasterxml.jackson.core</group>
-      <name>jackson-databind</name>
-      <version>2.15.1</version>
-      <licenses>
-        <license>
-          <id>Apache-2.0</id>
-        </license>
-      </licenses>
-      <purl>pkg:maven/com.fasterxml.jackson.core/jackson-databind@2.15.1?type=jar</purl>
-      <modified>false</modified>
-      <properties>
-        <property name="Sonatype truncated SHA1">ac9ba74d208faf356e47</property>
-        <property name="Match State">exact</property>
-        <property name="Identification Source">Sonatype</property>
-      </properties>
-    </component>
-  </components>
-  <vulnerabilities>
-    <vulnerability>
-      <id>CVE-2023-35116</id>
-      <source>
-        <name>NVD</name>
-        <url>http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-35116</url>
-      </source>
-      <ratings>
-        <rating>
-          <source>
-            <name>NVD</name>
-          </source>
-          <score>7.5</score>
-          <severity>critical</severity>
-          <method>other</method>
-          <vector>CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H</vector>
-        </rating>
-      </ratings>
-      <analysis>
-        <state>not_affected</state>
-        <justification>code_not_reachable</justification>
-        <responses>
-          <response>will_not_fix</response>
-          <response>update</response>
-        </responses>
-        <detail>An optional explanation of why the application is not affected by the vulnerable component.</detail>
-      </analysis>
-      <cwes>
-        <cwe>121</cwe>
-      </cwes>
-      <affects>
-        <target>
-          <ref>892f5b40-5371-46d4-a972-e30564414798</ref>
-        </target>
-      </affects>
-    </vulnerability>
-  </vulnerabilities>
-</bom>
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.leorg.awapp1</groupId>
+  <artifactId>awesome-app</artifactId>
+  <version>1.0-SNAPSHOT</version>
+
+  <name>awesome-app</name>
+  <!-- FIXME change it to the project's website -->
+  <url>http://www.example.com</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>1.7</maven.compiler.source>
+    <maven.compiler.target>1.7</maven.compiler.target>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-databind</artifactId>
+      <version>2.9.4</version>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
+      <plugins>
+        <!-- clean lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#clean_Lifecycle -->
+        <plugin>
+          <artifactId>maven-clean-plugin</artifactId>
+          <version>3.1.0</version>
+        </plugin>
+        <!-- default lifecycle, jar packaging: see https://maven.apache.org/ref/current/maven-core/default-bindings.html#Plugin_bindings_for_jar_packaging -->
+        <plugin>
+          <artifactId>maven-resources-plugin</artifactId>
+          <version>3.0.2</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>3.8.0</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-surefire-plugin</artifactId>
+          <version>2.22.1</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-jar-plugin</artifactId>
+          <version>3.0.2</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-install-plugin</artifactId>
+          <version>2.5.2</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-deploy-plugin</artifactId>
+          <version>2.8.2</version>
+        </plugin>
+        <!-- site lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#site_Lifecycle -->
+        <plugin>
+          <artifactId>maven-site-plugin</artifactId>
+          <version>3.7.1</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-project-info-reports-plugin</artifactId>
+          <version>3.0.0</version>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
+</project>
+
+
+
+
+
+
+
+
+
+
+
+
