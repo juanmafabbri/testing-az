@@ -1,0 +1,137 @@
+---
+version: 2
+plan:
+  project-key: PRJ1
+  key: PLANKEYB
+  name: 001 - Plan Success
+  description: DCAPT Bamboo test build plan
+stages:
+- Stage 1:
+    manual: false
+    final: false
+    jobs:
+    - Job 1
+Job 1:
+  key: JB1
+  tasks:
+  - checkout:
+      repository: dcapt-test-repo
+      path: dcapt-test-repo
+      force-clean-build: true
+      description: Checkout repository task
+  - script:
+      interpreter: BINSH_OR_CMDEXE
+      scripts:
+      - for i in $(seq 1 1000); do date=$(date -u); echo $date >> results.log; echo $date; sleep 0.06; done
+      description: Run Bash code
+  - script:
+      interpreter: BINSH_OR_CMDEXE
+      scripts:
+      - |-
+        rm -f *.xml
+        cat << EOF >> success.xml
+        <?xml version="1.0" encoding="utf-8"?>
+        <testsuites>
+        <testsuite name="pytest" errors="0" failures="0" skipped="0" tests="1000" time="1.6" timestamp="2021-08-04T13:12:34.674907" hostname="TEST_HOST">
+        EOF
+        i=1
+        while [ "$i" -le 1000 ]; do echo "<testcase classname=\"DcaptBambooTests\" name=\"test_case_$i\" time=\"0.16\"/>" >> success.xml;i=$(( i + 1 )); done
+        cat << EOF >> success.xml
+        </testsuite>
+        </testsuites>
+        EOF
+      description: Write XML test results
+  - any-task:
+      plugin-key: com.sonatype.clm.ci.bamboo:clm-scan-task
+      configuration:
+        clmOrgIdType: selected
+        clmStageTypeId: build
+        clmScanTargets: '**/*.xml'
+        failOnScanningErrors: 'true'
+        clmAppId: test3
+        clmStageType: selected
+        clmAppIdType: selected
+        clmOrgId: 256d828c50d240bbabc1b1695af70f0a
+      description: bamboo-app-2
+  final-tasks:
+  - test-parser:
+      type: junit
+      ignore-time: false
+      test-results: success.xml
+      description: Unit test results parser task
+  artifacts:
+  - name: Test Reports
+    location: .
+    pattern: '*.log'
+    shared: false
+    required: false
+    httpCompressionOn: false
+  artifact-subscriptions: []
+variables:
+  stack_name: ''
+repositories:
+- dcapt-test-repo:
+    type: git
+    url: https://bitbucket.org/atlassianlabs/dcapt-bamboo-test-repo.git
+    branch: master
+    command-timeout-minutes: '180'
+    lfs: false
+    verbose-logs: false
+    use-shallow-clones: false
+    cache-on-agents: true
+    submodules: false
+    ssh-key-applies-to-submodules: false
+    fetch-all: false
+- testing-az:
+    type: github
+    base-url: https://github.com
+    repository: juanmafabbri/testing-az
+    branch: main
+    user: juanmafabbri
+    password: BAMSCRT@0@0@EejFwJsNcZpEh7hKnkujivF2udWkMQNc3eXFx4HGByNZrepy+f6HNpEUZxFA/rqgSz/pNiNoQpLcSlYYBbFVTBH7PGx3PzeMX1XV2adFhKNccoRiOgZ7+JYDU4bVc35H
+    command-timeout-minutes: '180'
+    lfs: false
+    verbose-logs: false
+    use-shallow-clones: false
+    cache-on-agents: true
+    submodules: false
+    ssh-key-applies-to-submodules: true
+    fetch-all: false
+    viewer:
+      com.atlassian.bamboo.plugins.atlassian-bamboo-plugin-git:githubViewer: {}
+triggers: []
+branches:
+  create: manually
+  delete: never
+  link-to-jira: true
+notifications: []
+labels: []
+dependencies:
+  require-all-stages-passing: false
+  enabled-for-branches: true
+  block-strategy: none
+  plans: []
+other:
+  concurrent-build-plugin: system-default
+---
+version: 2
+plan:
+  key: PRJ1-PLANKEYB
+plan-permissions:
+- roles:
+  - logged-in
+  permissions:
+  - view
+  - edit
+  - build
+  - view-configuration
+- users:
+  - admin
+  permissions:
+  - view
+  - edit
+  - build
+  - clone
+  - admin
+  - view-configuration
+...
