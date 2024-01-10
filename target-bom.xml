@@ -65,7 +65,6 @@
         <detail>An optional explanation of why the application is not affected by the vulnerable component.</detail>
       </analysis>
       <cwes>
-      <cwes>
         <cwe>121</cwe>
       </cwes>
       <affects>
